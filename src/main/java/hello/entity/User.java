@@ -10,7 +10,7 @@ public class User {
     Instant createdAt;
     Instant updatedAt;
 
-    public User(Integer id, String username,String encryptedPassword) {
+    public User(Integer id, String username, String encryptedPassword) {
         this.id = id;
         this.username = username;
         this.encryptedPassword = encryptedPassword;

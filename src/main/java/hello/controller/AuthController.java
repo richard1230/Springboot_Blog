@@ -8,7 +8,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ import java.util.Map;
 @Controller
 public class AuthController {
     private UserService userService;
-//    private UserDetailsService userDetailsService;//这里的UserDetailsService与UserService等效
+    //    private UserDetailsService userDetailsService;//这里的UserDetailsService与UserService等效
     private AuthenticationManager authenticationManager;
 
     @Inject
