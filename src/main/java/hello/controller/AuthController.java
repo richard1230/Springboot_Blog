@@ -8,6 +8,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,11 +39,14 @@ public class AuthController {
     @ResponseBody
     public Object auth() {
 
-        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+//        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         //用户状态的维持是通过cookies
-        User loggedInUser = userService.getUserByUsername(userName);
+        User loggedInUser = userService.getUserByUsername(authentication == null ? null : authentication.getName());
         if (loggedInUser == null) {
-            return Result.failure("用户没有登录");
+            return Result.failure("user is not login");
 //            return new Result("fail", "用户没有登录", false);
         } else {
             return Result.success(null, true, loggedInUser);
@@ -60,7 +64,7 @@ public class AuthController {
         User loggedInUser = userService.getUserByUsername(userName);
         if (loggedInUser == null) {
             //static factory method
-            return Result.failure("用户没有登录");
+            return Result.failure("user is not login");
         } else {
             //登出就是将其上下文状态清掉
             SecurityContextHolder.clearContext();//需要google一下

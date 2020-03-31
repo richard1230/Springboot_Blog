@@ -12,3 +12,4 @@ target/
 bin/
 vue-blog-preview/
 mysql-data/
+.DS_Store

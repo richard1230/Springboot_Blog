@@ -18,6 +18,9 @@
 <!--		<maven.compiler.target>1.8</maven.compiler.target>-->
 <!--		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
 <!--	</properties>-->
+<!--	<properties>-->
+<!--		<junit-jupiter.version>5.6.0</junit-jupiter.version>-->
+<!--	</properties>-->
 <repositories>
     <repository>
         <id>alimaven</id>
@@ -28,6 +31,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<junit-jupiter.version>5.6.0</junit-jupiter.version>
 	</properties>
 
 	<dependencies>
@@ -69,6 +73,27 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.6.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.6.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>3.3.3</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -77,6 +102,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.22.2</version>
+					</plugin>
+					<plugin>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.22.2</version>
+					</plugin>
 		</plugins>
 	</build>
 
